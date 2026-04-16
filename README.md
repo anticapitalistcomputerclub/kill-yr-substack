@@ -4,13 +4,19 @@ A browser extension that redirects Substack articles to `archive.is`. Works on `
 
 ## How It Works
 
-Three tiers. Each one more ruthless than the last.
+Three tiers. Each one more ruthless than the last…
 
-**Tier 1: Known Substack domains.** All `*.substack.com/p/*` article URLs and `substack.com/@*` profile URLs get intercepted at the network level via `declarativeNetRequest`. The HTTP request never fires. The page never loads. Done.
+### Tier 1: Known Substack domains
 
-**Tier 2: Learned custom domains.** Once the extension flags a custom domain as a Substack site (see Tier 3), it caches the domain name and adds a `declarativeNetRequest` rule. Every future visit to that domain gets the same network-level block as Tier 1. No traffic to Substack.
+All `*.substack.com/p/*` article URLs and `substack.com/@*` profile URLs get intercepted at the network level via `declarativeNetRequest`. The HTTP request never fires. The page never loads. Done.
 
-**Tier 3: First-visit detection.** The first time you hit a Substack with a custom domain, the page has to load so the content script can sniff for platform fingerprints:
+### Tier 2: Learned custom domains
+
+Once the extension flags a custom domain as a Substack site (see Tier 3), it caches the domain name and adds a `declarativeNetRequest` rule. Every future visit to that domain gets the same network-level block as Tier 1. No traffic to Substack.
+
+### Tier 3: First-visit detection
+
+The first time you hit a Substack with a custom domain, the page has to load so the content script can sniff for platform fingerprints:
 
 1. `<meta name="generator" content="Substack">` tag
 2. Stylesheets or assets from `substackcdn.com`
