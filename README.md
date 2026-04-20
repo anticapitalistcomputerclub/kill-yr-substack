@@ -2,6 +2,8 @@
 
 A browser extension that redirects Substack articles to `archive.is`. Works on `*.substack.com` as well as custom domains.
 
+[Why does this exist?](https://jasoncosper.com/kill-yr-substack/)
+
 ## How It Works
 
 Three tiers. Each one more ruthless than the last…
